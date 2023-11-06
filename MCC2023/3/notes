@@ -1,0 +1,60 @@
+iterate through the list and store a+b in a list,
+as well as finding the maximum c+d, and remembering its index
+
+then just sort the list, and add up the largest m-1 a+bs
+and add the maximum a+b+c+d
+
+without the sorting, its just O(N)
+
+there may be some cases where even though c and d is large
+its weak a,b makes it bad
+so after we compare c and d, we compare a and b to choose best a,b,c,d option
+
+
+
+It alr doesn't work for task 2
+so let's try to find out in what cases it could go wrong
+
+Im naming the card that is at the most upfront as star card
+
+Case 1:
+CD is very high, but AB is low
+and there exists a case where a card isn't picked, has lower CD, but AB quite high
+so total is larger than star card
+
+Case 2:
+CD is high, AB is low
+and there exists a card which is picked, which has lower CD, but higher total,
+and by choosing that card instead of current star card, you allow one more 
+A+B card to get in, which is quite high
+
+
+so the star card can only be the star card when its sufficiently large enough?
+
+
+find the pattern!
+Im pretty sure this problem is just about finding the best star card
+then the rest is easy right?
+maybe it needs a few more checks?
+
+
+
+maybe what I can do is
+first arrange using only ABs, then choose the largest sum to be the head
+then, find using the remaining cards, and see if it can dethrone the head
+so by setting the other card as head
+
+the sum adds less the last index, and c,d of head
+but adds the sum of new possible head
+
+
+this way, its O(n**2) I think, for task 8, n = 20000, I think this could work
+
+wait actually, the only challanger that can rly dethrone the head is the largest sum
+left out of the chosen cards
+
+cause if you don't choose him, and choose the next one, you're just gonna choose the smaller sum, and remove the current head, and put the smaller sum in, which is ofc gonna be smaller than before
+
+
+nice! copying 20000 lines to vim took so long bruh, the solve was rly fast tho! nice!
+copying it to sublime is much faster

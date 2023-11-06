@@ -1,0 +1,59 @@
+pretty sure you should just 
+sort the arr
+and find the existing runs, and store them into a list 
+
+then find the longest runs, and try to connect them together
+if they can't connect, then find the third longest run etc?
+
+-----------------------------------------------------------------
+
+can I use the A1+A2+A3 thing?
+probably
+wait yeah I think you can use this to solve the problem
+
+so what I should do is 
+1. sort the arr
+2. calculate the existing runs, and put them into an arr
+3. make the A1,A1+A2,A1+A2+A3 array
+   so now to get A1+A2, you need one wild card
+   to get A1+A2+A3, you need 3 wild cards
+   the + becomes like a gas fee that is paid using wild cards
+
+
+so when we have two wild cards, we can use this arr to find
+A1+A2,A2+A3,A3+A4 etc to find the largest run
+
+to calc length of run of A1+A2, just do 
+A1 + A2 + amount of +s in A1+A2
+
+the problem is that this assumes that all gap size is only 1
+if let's say the gap between A2 and A3 is three, we can kinda solve it by using
+[A1,A1+A2,A1+A2+0,A1+A2+0+0,A1+A2+0+0+A3,...]
+
+but will that just take up too much time and space?
+
+what if we make an array that stores the gaps as A1+A2+A3+..
+and the runs as just an array
+
+store as (A1,A1),(A1+A2,A2), ... ?
+
+then when we want to connect some runs, for example let's say
+when we have k wildcards, and we start testing with A1
+
+We find the A1+A2+... that is less than or equal to k
+and we use that as the chain and calculate the run
+and then when we want to start with A2, we get the A2+A3+A4+...
+then we see how many wild cards we minused off, and check to see next if we could add 
+the next gap into the run
+
+ya this looks nice
+
+to make the calculations easier, I should also make an A1+A2 thing for the runs
+
+
+
+nah bruh, I tried to make an elegant solution
+and it keep didnt work, so I made brute.py to see the answer for the simpler tasks
+and see what I got wrong etc
+and guess what, brute.py could solve t6 💀
+BRUHHHH. lol

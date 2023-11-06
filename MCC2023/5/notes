@@ -1,0 +1,228 @@
+so the aim is to not waste any space
+I mean if you could make unlimited blue rectangles, you could just copy the shapes of
+the red rectangles and use up all the space
+
+looking at the test cases,
+I think the special cases are just for when k = 1 and k >= n
+
+task 2: just find the highest length, and all the width add up tgth, and multiply them
+task 3: find the two most identical rectangles and use a square to represent them both
+task 4: just count up all the areas of the red squares
+
+The general solution for 1 < k < n
+should probably be grouping together squares
+amount of groups = k
+
+
+
+When two rectangles are side by side and have equal height, they can be grouped perfectly
+However if they have equal width but diff height, the more equal the height the better
+
+So what I should look for when grouping them
+1. same height
+2. if diff height, the closer the height the better, the smaller the width of smaller
+   rectangle the better.
+
+
+since N is just <= 200, we can iterate through it many times
+also rmb what we're trying to do is reducing the amount of space wasted in blue rectangles
+
+So we first iterate through it and group the same heights tgth
+then we check if len(N) <= k
+
+if not, then we find out how many more 
+
+so its essentially like
+O(k*n)
+
+
+
+
+when we get to the point where we need to do more groupings
+I can prob just brute it since N is so small
+
+So I can just try to group rect 1 with 2, 2 with 3, 3 with 4 etc
+and find the minimum wasted, then group those together
+
+if I see same height, then auto group up and go next
+
+
+
+
+this algorithm doesn't necessarily find the most minimal value
+should I try to group all the same heights together instead?
+and only when there are no more same heights, then do the other thing
+cause my instincts tell me that this is the way to go
+
+when grouping same heights
+I should sort the heights, and group from smallest to largest
+
+so I should try to group small heights that are similar together first
+
+
+
+Do I need to check the whole list everytime?
+I think yes
+
+
+might need to sort according to index too
+
+
+2solve.py is better than solve.py bruh
+focus on 2solve.py instead
+
+maybe it works cause thats just one grouping
+but when got multiple groupings, stuff is more complicated bro
+
+
+
+--------------------------------------------------------------------
+been googling a bit
+all the sources seem to point to dynamic programming
+I prob need that to solve this problem
+
+I feel like dp is just for optimization
+
+
+
+in normal situations 2solve is better
+in some situations solve is better
+how to pick which to use in which?
+
+
+is a brute force way to just get k groups, and try every combination?
+so like, if k = 2, and n = 150
+we try first rect group 1 chunk, second rect group 149 chunks etc
+and we find the most minimal solution
+
+let's try it
+
+this takes O(k) tho I think
+for t3 it might work, but t5 I doubt it
+
+
+
+I guess I can use this t3 case to test if my solutions work, and see what their 
+solution is
+can use brute.py to test stuff and develop my solve
+
+
+there has to be a smart and greedy way to do this right?
+
+examine t3 solution to see
+
+
+
+
+
+I think this maybe could be solved by using a sort of
+"forseeing the future"
+
+
+ownt ans:
+68715952
+(1000, 71623)
+(987, 8)
+(935, 114)
+(925, 175)
+
+
+another idea: start with k = 1, and split at most wasted spaces?
+
+also compare my results with brute.py
+
+
+wait this cutting idea seems rly nice
+think it out first before implementing it
+
+holy flip I think this works
+HOLYYYYY
+let's implement it first
+
+this takes O(k*n) time I think
+since it cuts it k-1 times
+and for each cut
+it goes into each grouping and checks the gaps between the rects
+so essentially N times
+
+tested this with the ownT2 test and brute.py to confirm it
+I think it works bro
+
+
+todo:
+we dont have to count if all stick tgth right? that's just pointless right?
+
+why are there empty groups?
+
+
+ok there's a problem with my solution
+I think it can be fixed and it'll still work prob
+
+chged the solution to
+O(n**2 * k)
+
+It prob will still work I think
+
+the cuts are diff for cutting off the head and tail!!!
+maybe that's where the bug is at
+wait but it should still work since Im directly using len(groupings), there's no bug
+
+for t5, head and tails aren't even cut off
+
+MY GOD YES I FINALLY FOUND A DIFF IN BRUTE.PY AND SOLVE.PY RESULT
+OTHERWISE I RLY DK WHERE'S THE ERROR BRUH
+
+
+I know where's the problem
+I just cut off the head and tail
+I didnt consider cutting off head to other parts
+
+
+the drawing on whiteboard helped me a lot?
+in both generating ideas AND debugging?
+
+
+I think its a matter of slicing into two or slicing into three
+how to decide well?
+
+
+maybe we try cutting into two first
+then only cut into three?
+doesnt work
+
+
+how do I decide when to slice into two and when to slice into three?
+slicing into two removes less, but gives you one more slice to use
+slicing into three removes more, but you have one less slice to use
+
+
+so if two slices at different groups > one big slice, then do that instead
+(if one big slice in one group is highest, it'll alr be detected)
+
+
+normally, the one slice isnt even used I think
+idk
+
+
+2, 5, 6, 4, 4, 1, 8,
+
+is it choosing a better slice when got two same slice?
+
+holy flip I think thats it
+when the gMaxSaved2 is same, how do you choose the better slice?
+
+now that I tested it, feels like it doesnt matter?
+bro I just realized, the slices are the same bruh
+one is just start 0 end middle
+other is start middle end 0 
+
+BRUH
+
+
+
+Im getting the partitions
+2, 5, 6, 3, 5, 1, 8,
+when the ans partition is 
+2, 5, 6, 4, 4, 1, 8,
+
+IM SO CLOSE MAN
