@@ -1,0 +1,3 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/1/solve.py
+
+I just iterated through the array, and for the ith iteration I would adjusted the ith value k times, then go to the next iteration. I tried to make it slightly faster by storing if for the last iteration it was odd or even, as if it was previously odd, it would definetely be even now, and I could do one less modulo.

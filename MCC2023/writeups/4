@@ -1,0 +1,10 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/4/brute.py
+
+I used a brute force approach to this problem
+
+I first sorted the array, and counted out all the existing runs (that is done without using wildcards) and stored all of the runs in an array called runs
+At the same time, I also counted out all the gaps between the existing runs and stored them in an array called gaps.
+
+I then iterated through the runs array, and tried to connect runs[i] with runs[i+1:] and calculate how far I can go, by using the gaps array and the wildcard number.  If the run was longer than my current answer, the run would be my new answer.
+
+after the loop is done, every possible run would have been done and I would get the maximum number.

@@ -1,0 +1,11 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/6/solve.py
+
+I used the iterators python library to find every combination of the arr for size 1 to len(arr) to find every non-empty subset, then summed up the subset and put it into an array called subsetSums
+
+I then iterated through subsetSums and added the pow(element,k) to the answer
+
+I was only able to solve task 1,2, and 3 for this problem as I couldn't generate the subsets fast enough, and too much resources was used so the process was killed.
+
+I tried the code here:
+https://takeuforward.org/data-structure/subset-sum-sum-of-all-subsets/
+to generate the subsets but it still wasn't efficient enough.

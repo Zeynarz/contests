@@ -1,0 +1,5 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/3/solve.py
+
+I got the A+B and C+D values of all the cards and put them into an array along with their cardIndex,  I also got the A+B+C+D of the cards and stored them in another array, also along with their cardIndex. I then sorted the two arrays. From the A+B values array, I chose the m largest values as the chosen cards, and from the chosen cards, I chose the one with the largest C+D value so that it could be put at the most upfront. However this is still not confirmed to be the biggest score we can get yet since there may be other cards with a large  A+B+C+D,  that could be used to get a higher score. If card X's A+B+C+D is larger than the smallest A+B value of the chosen cards and the C+D value of the card that is up front, then card X could be used to be put upfront to get a higher score instead.
+
+I just have to check the largest A+B+C+D value of the remaining cards, since if the largest value already isn't big enough, the remaining values will of course be not big enough.

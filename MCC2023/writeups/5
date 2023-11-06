@@ -1,0 +1,23 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/5/solve.py (script has been altered for task 5 only, so it wont work on task 3 and task 1 as it requires (k-1) to be even)
+
+I managed to solve every task except the last one.
+
+This problem is essentially just trying to minimise the area wasted by the blue rectangles.
+
+For task 2, since K is 1, we just have to calculate the area of the blue rectangle that covers all red rectangles. We can do this by finding the highest height of the red rectangles and multiplying it with the sum of width of all red rectangles
+For task 4, since k > n, we can make a blue rectangle for each red rectangle, and no space would be wasted, thus we just need to add up all the areas of the red rectangle.
+
+For task 1, I looped through the red rectangles and grouped rectangle i with rectangle i+1,  and see how much area the blue rectangles would waste. I then chose the groupings with the least wasted area and did this for (k-1) times.
+However this didn't work for task 3, so I had to come up with another solution.
+
+For task 2, I started with all rectangles being grouped together, then deciding at which rectangle should I slice off and separate the two groupings into one grouping. I decided by seeing how much the area slice would save, and chose the slice that saved the most area.
+This worked for task 2
+
+For task 5 however, I did the slicing thing again but now I loop through every grouping and see which part I can slice, for (k-1) times. This didn't work. Then I realised that if we have more than 2 slices left, I could actually slice two place at once, and turn one grouping into three groupings. I then did the same thing, and tried out every slice to find the slices that would save the most area. (I also checked for the cases where the rectangles are the first or last rectangle of the grouping, and the grouping can only be sliced into two pieces). This also didn't work. 
+
+I then wrote a brute force script that tries out every grouping and made my own test cases to find where the problem was in my script. I printed out every slice/new groupings I made, and realised that there were some cases where instead of slicing two times in the same group, slicing once in one group and once in another group would be better. So I checked for if slicing twice in one group is better than slicing twice in two different groups, and if yes slice twice in one group, if no slice twice in different groups.
+
+However this still wasn't enough to solve the problem
+I made more test cases and found out there were some very minor differences between the test cases's answers and the answer my script made.
+
+I couldn't figure it out as time and was running out thus I didn't manage to solve it.

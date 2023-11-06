@@ -1,0 +1,5 @@
+https://github.com/Zeynarz/cp/blob/main/MCC2023/2/solve.py
+
+I got into a while loop that would only break out if Alice got a high enough power level, or if Alice couldn't get any stronger (when she can't even beat the lowest enemy power level),
+
+for each iteration, I used a binary search to find the largest power level enemy that Alice could beat, added its power level to Alice's, and removed the enemy from the list
