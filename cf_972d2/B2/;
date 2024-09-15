@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+typedef long long ll;
+
+int main(){
+    int t;
+    cin >> t;
+
+    for (int i=0; i<t; i++){
+        ll n,m,q;
+        cin >> n >> m >> q;
+
+        ll teachers[m];
+        for (int j=0; j<m; j++)
+            cin >> teachers[j];
+
+        sort(teachers,teachers+m);
+
+        ll david;
+        for (int j=0; j<q; j++){
+            cin >> david;
+            
+            // solve query
+            if (david > teachers[m-1])
+                // right wall
+                cout << n-teachers[m-1] << endl;
+            else if (david < teachers[0])
+                // left wall
+                cout << teachers[0]-1 << endl;
+            else {
+                // sandwiched
+                // find the two teachers that sandwich him using binsearch
+                ll si = 0;
+                ll ei = m-1;
+                ll index;
+                while (si != ei) {
+                    index = (si+e1)/2;
+
+                    if (david > teachers[index]){
+                        si = si+1;
+                    } else {
+                        ei = ei-1;
+                    }
+                }
+                
+                ll median = (a+b)/2;
+                ll ans = min(abs(a-median),abs(b-median));
+                cout << ans << endl;
+            }
+        }
+
+
+    }
+}

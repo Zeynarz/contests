@@ -1,0 +1,26 @@
+so the aim is to  minimise subsequences which are palindromes
+subsequences != substrings
+
+8
+aaeeiiou
+
+can I just do 
+8
+aaeeiiou
+
+
+aaeioua
+
+aeioi  8
+aeiio  6
+
+sticking them together is the best prob
+
+
+
+7
+aaeeiou 7+1+2
+or 
+aaaeiou 7+1+4
+
+space it out

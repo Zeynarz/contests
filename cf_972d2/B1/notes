@@ -1,0 +1,43 @@
+if equal distance between teachers and wall, stay still
+if there is a place to run, then run
+
+m=2,q=1
+so only 2 teachers, and 1 query
+
+u only rly need to know the 2 teachers that sandwich him right?
+or only 1 teacher if he's sandwiched by the wall
+
+
+1 2 3 4 5
+2,2
+
+guarenteed
+b != a
+
+
+1 2 3 4
+2,1
+
+
+1 2   3  4 5 6 7
+2,4
+
+
+
+
+1 2 3 ! 5
+
+
+
+
+1 2 3 4 5 6 7 8 9 10
+
+
+its like, finding the median between the two teachers if you're sandwiched,
+and that is the end point
+
+
+if you're sandwiched, best thing to do is to go to the middle
+if you're at the walls, best thing to do is to run to the walls
+
+
